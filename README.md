@@ -1,0 +1,2 @@
+# SingletonPattern-Demo
+JavaScript设计模式之单例模式的简单demo
