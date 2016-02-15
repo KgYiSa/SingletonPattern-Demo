@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<button id="a">按钮A</button>
+<button id="d">按钮D</button>
+<script type="text/javascript">
+    var top1 = {
+        init: function () {
+            this.render();
+            this.bind();
+        },
+        a: 4,
+        render: function () {
+            var me = this;
+            me.btn = $("#a");
+        },
+        bind: function () {
+            var me = this;
+            me.btn.click(function () {
+                me.test();
+            });
+        },
+        test: function () {
+            a = 5;
+            alert(a);
+        },
+    };
+    var banner = {
+        init: function () {
+            this.render();//先绑定DOM元素
+            this.bind();//再为DOM元素绑定事件
+        },
+        a: 4,
+        //render把所有的DOM元素放到里面
+        render: function () {
+            var me = this;//这个this指top
+            me.btna = $("#d");
+        },
+        //bind绑定事件
+        bind: function () {
+            var me = this;
+            me.btna.click(function () {
+                //业务逻辑取出去
+                me.test();
+            });
+        },
+        test: function () {
+            a = 6;//给a赋值,改变自己的a的值
+            top1.a = 7;//改变top的a的值
+            alert(top1.a);
+        },
+    };
+
+    //让top和banner分别初始化
+    top1.init();
+    banner.init();
+
+</script>
+</body>
+</html>

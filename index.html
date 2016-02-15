@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //xiaowang是一个自执行的函数
+    var xiaowang=(function(argument){
+        var xiaowangjia=function(msg){
+            this.menling=msg;
+        };
+        var men;
+        var info={
+            sendMsg:function(msg){
+                if(!men){
+                    men=new xiaowangjia(msg);
+                }
+                return men;
+            }
+        };
+        return info;
+    })();
+    //xiaoli是一个Object类
+    var xiaoli={
+        //xiaoli有一个callXiaoWang呼叫xiaowang的方法
+        callXiaoWang:function(msg){
+            var xw= xiaowang.sendMsg(msg);
+            alert(xw.menling);
+            xw=null;//等待垃圾回收机制
+        }
+    };
+    xiaoli.callXiaoWang("小王在家吗");
+</script>
+</body>
+</html>
